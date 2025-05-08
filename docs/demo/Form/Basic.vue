@@ -44,7 +44,7 @@ const submit = async () => {
       </FormItem>
       <FormItem label="test value" prop="test">
         <template #default="{ validate }">
-          <input type="text" v-model="model.test" @blur="() => validate" />
+          <input type="text" v-model="model.test" @blur="() => validate('')" />
         </template>
       </FormItem>
       <div>

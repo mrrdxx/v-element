@@ -86,7 +86,6 @@ const getTriggeredRules = (trigger?: string) => {
 }
 //根据触发方式筛选验证规则
 const validate = (trigger?: string) => {
-  console.log(trigger)
   const modelName = props.prop
   const triggeredRules = getTriggeredRules(trigger)
 

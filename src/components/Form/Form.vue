@@ -1,7 +1,7 @@
 <template>
   <form class="vk-form">
     <slot />
-    <button @click.prevent="validate">验证</button>
+    <!-- <button @click.prevent="validate">验证</button> -->
   </form>
 </template>
 <script setup lang="ts">
@@ -64,3 +64,4 @@ defineExpose<FormInstance>({
   validate
 })
 </script>
+<!-- nihao -->
