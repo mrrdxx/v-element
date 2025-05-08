@@ -36,6 +36,7 @@ const submit = async () => {
       <FormItem label="the email" prop="email">
         <Input v-model="model.email" />
       </FormItem>
+
       <FormItem label="the password" prop="password">
         <template #label="{ label }">
           <Button>{{ label }}</Button>
