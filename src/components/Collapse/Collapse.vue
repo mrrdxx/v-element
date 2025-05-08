@@ -5,10 +5,10 @@
 </template>
 <script setup lang="ts">
 import { ref, provide, watch } from 'vue'
-import type { NameType, CollapseProps, CollapseEmits } from './type'
-import { collapseContextKey } from './type'
+import type { NameType, CollapseProps, CollapseEmits } from './types'
+import { collapseContextKey } from './types'
 defineOptions({
-   name: 'VKCollapse'
+  name: 'VKCollapse'
 })
 const props = defineProps<CollapseProps>()
 const emit = defineEmits<CollapseEmits>()

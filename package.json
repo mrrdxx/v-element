@@ -3,6 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "main": "./dist/v-element.umd.cjs",
+  "module": "./dist/v-element.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/v-element.js",
+      "require": "./dist/v-element.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -48,6 +59,7 @@
     "typescript-eslint": "^8.31.0",
     "unplugin-vue-macros": "^2.14.5",
     "vite": "^6.2.4",
+    "vite-plugin-dts": "^4.5.3",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vitepress": "^1.6.3",
     "vitest": "^3.1.2",

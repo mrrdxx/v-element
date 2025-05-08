@@ -8,10 +8,10 @@ import ICon from './components/Icon/Icon.vue'
 import Tooltip from './components/Tooltip/Tooltip.vue'
 import Dropdown from './components/Dropdown/Dropdown.vue'
 import Message from './components/Message/Message.vue'
-import { createMessage } from './components/Message/methods'
+import { createMessage } from './components/Message/method'
 
 // 导入Vue API和类型
-import { ref, onMounted, provide, h } from 'vue'
+import { ref, onMounted, provide, h, inject } from 'vue'
 import type { MenuOption } from './components/Dropdown/types'
 import type { ButtonInstance } from './components/Button/types'
 import type { AlertInstance } from './components/Alert/types'
@@ -133,6 +133,8 @@ const close = () => {
 </script>
 <template>
   <main>
+    {{ $echo('viking') }}
+    <v-button round>click me</v-button>
     <!-- ================ Message 组件演示 ================ -->
     <section></section>
 

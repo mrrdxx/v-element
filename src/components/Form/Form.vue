@@ -31,6 +31,16 @@ const removeField: FormContext['removeField'] = field => {
     fields.splice(fields.indexOf(field), 1)
   }
 }
+const resetFields = (keys: string[] = []) => {
+  const filterArr =
+    keys.length > 0 ? fields.filter(field => keys.includes(field.prop)) : fields
+  filterArr.forEach(field => field.resetField())
+}
+const clearValidate = (keys: string[] = []) => {
+  const filterArr =
+    keys.length > 0 ? fields.filter(field => keys.includes(field.prop)) : fields
+  filterArr.forEach(field => field.clearValidate())
+}
 const validate = async () => {
   let validationErrors: ValidateFieldsError = {}
   for (const field of fields) {
@@ -61,7 +71,9 @@ provide(formContextKey, {
 formContextKey 是一个 Symbol 类型的唯一标识符，用于标识这个提供的数据
 这样，Form 组件就相当于一个"数据提供者"*/
 defineExpose<FormInstance>({
-  validate
+  validate,
+  resetFields,
+  clearValidate
 })
 </script>
 <!-- nihao -->

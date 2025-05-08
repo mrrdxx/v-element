@@ -10,6 +10,8 @@ import App from './App.vue'
 library.add(fas)
 //将整个fas图标集添加到Font Awesome库中，使所有实心图标可在应用中使用
 import './styles/index.css'
-
-createApp(App).mount('#app')
+import testPlugin from './test.plugin'
+const app = createApp(App)
+app.use(testPlugin)
+app.mount('#app')
 //将FontAwesomeIcon组件全局注册为font-awesome-icon，在整个应用中可用

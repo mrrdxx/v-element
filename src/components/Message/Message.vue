@@ -34,7 +34,7 @@ import { ref, onMounted, watch, computed, nextTick } from 'vue'
 import type { MessageProps } from './types'
 import RenderVnode from '../Common/RenderVnode'
 import ICon from '../Icon/Icon.vue'
-import { getLastBottomOffset } from './methods'
+import { getLastBottomOffset } from './method'
 import useEventListener from '@/hooks/useEventListener'
 const props = withDefaults(defineProps<MessageProps>(), {
   type: 'info',

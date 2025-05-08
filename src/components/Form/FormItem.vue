@@ -4,7 +4,8 @@
     :class="{
       'is-error': validateStatus.state === 'error',
       'is-success': validateStatus.state === 'success',
-      'is-loading': validateStatus.loading
+      'is-loading': validateStatus.loading,
+      'is-required': isRequired
     }"
   >
     <label class="vk-form-item__label">
@@ -19,7 +20,6 @@
         {{ validateStatus.errorMsg }}
       </div>
     </div>
-    {{ innerValue }}-{{ itemRules }}
   </div>
 </template>
 <script setup lang="ts">
@@ -37,7 +37,9 @@ import { formContextKey, formContextItemKey } from './types'
 import type {
   FormItemProps,
   FormValidateFailure,
-  FormItemContext
+  FormItemContext,
+  ValidateStatusProp,
+  FormItemInstance
 } from './types'
 
 defineOptions({
@@ -48,11 +50,12 @@ const formContext = inject(formContextKey)
 /*使用 inject 来获取父组件提供的数据
 通过相同的 formContextKey 来匹配要获取的数据
 这样，FormItem 组件就可以访问到 Form 组件中的 model 和 rules*/
-const validateStatus = reactive({
+const validateStatus: ValidateStatusProp = reactive({
   state: 'init',
   errorMsg: '',
   loading: false
 })
+let initialValue: any = null
 const innerValue = computed(() => {
   const model = formContext?.model
   if (model && props.prop && !isNil(model[props.prop])) {
@@ -84,8 +87,11 @@ const getTriggeredRules = (trigger?: string) => {
     return []
   }
 }
+const isRequired = computed(() => {
+  return itemRules.value.some(rule => rule.required)
+})
 //根据触发方式筛选验证规则
-const validate = (trigger?: string) => {
+const validate = async (trigger?: string) => {
   const modelName = props.prop
   const triggeredRules = getTriggeredRules(trigger)
 
@@ -118,17 +124,39 @@ const validate = (trigger?: string) => {
       })
   }
 }
+const clearValidate = () => {
+  validateStatus.state = 'init'
+  validateStatus.errorMsg = ''
+  validateStatus.loading = false
+}
+
+const resetField = () => {
+  clearValidate()
+  const model = formContext?.model
+  if (model && props.prop && !isNil(model[props.prop])) {
+    model[props.prop] = initialValue
+  }
+}
 const context: FormItemContext = {
   validate,
-  prop: props.prop || ''
+  prop: props.prop || '',
+  clearValidate,
+  resetField
 }
 provide(formContextItemKey, context)
 onMounted(() => {
   if (props.prop) {
     formContext?.addField(context)
+    initialValue = innerValue.value
   }
 })
 onUnmounted(() => {
   formContext?.removeField(context)
+})
+defineExpose<FormItemInstance>({
+  validateStatus,
+  validate,
+  resetField,
+  clearValidate
 })
 </script>

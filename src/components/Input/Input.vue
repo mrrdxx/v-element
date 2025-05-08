@@ -126,7 +126,7 @@ const passwordVisible = ref(false)
 const inputRef = ref() as Ref<HTMLInputElement>
 const formItemContext = inject(formContextItemKey)
 const runValidation = (trigger?: string) => {
-  formItemContext?.validate(trigger)
+  formItemContext?.validate(trigger).catch(e => console.log(e.errors))
 }
 const showClear = computed(
   () =>
