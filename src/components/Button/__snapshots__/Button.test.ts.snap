@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button.vue > basic button 1`] = `
+"<button class="vk-button vk-button--primary" type="button">
+  <!--v-if--><span>button</span>
+</button>"
+`;
