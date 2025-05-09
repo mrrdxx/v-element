@@ -1,6 +1,6 @@
 {
   "name": "bear-element",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "Bearmute Element",
   "type": "module",
   "main": "./dist/umd/v-element.umd.cjs",

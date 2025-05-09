@@ -28,6 +28,9 @@ import type { Instance } from '@popperjs/core'
 import { reactive, ref, watch, onUnmounted, computed } from 'vue'
 import useClickOutside from '../../hooks/useClickOutside'
 import { debounce } from 'lodash-es'
+defineOptions({
+  name: 'VkTooltip'
+})
 const props = withDefaults(defineProps<TooltipProps>(), {
   placement: 'bottom',
   trigger: 'hover',

@@ -36,7 +36,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import type { SwtichProps, SwtichEmits } from './types'
 
 defineOptions({
-  name: 'VkSwtich',
+  name: 'VkSwitch',
   inheritAttrs: false
 })
 const props = withDefaults(defineProps<SwtichProps>(), {

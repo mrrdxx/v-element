@@ -28,12 +28,6 @@ export default defineConfig({
         globals: {
           vue: 'Vue'
         }
-        // assetFileNames: chunkInfo => {
-        //   if (chunkInfo.name === 'style.css') {
-        //     return 'index.css'
-        //   }
-        //   return chunkInfo.name as string
-        // }
       }
     }
   }

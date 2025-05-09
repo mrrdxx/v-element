@@ -68,4 +68,7 @@ defineExpose<DropdownInstance>({
   show: () => tooltipRef.value?.show(),
   hide: () => tooltipRef.value?.hide()
 })
+defineOptions({
+  name: 'VkDropdown'
+})
 </script>

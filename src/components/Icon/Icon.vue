@@ -15,7 +15,7 @@ import { omit } from 'lodash-es'
 import type { FontAwesomeIconProps } from '@fortawesome/vue-fontawesome'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 defineOptions({
-  name: 'VKIcon',
+  name: 'VkIcon',
   inheritAttrs: false
   //在Vue中，默认情况下（即inheritAttrs: true），
   //组件接收的但未被声明为props的属性（如class、style、id、data-等）

@@ -2,6 +2,7 @@ import type { App } from 'vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import Alert from '@/components/Alert'
 import Button from '@/components/Button'
 import Collapse, { CollapseItem } from '@/components/Collapse'
 import Dropdown from '@/components/Dropdown'
@@ -21,6 +22,7 @@ import './styles/index.css'
 library.add(fas)
 
 const components = [
+  Alert,
   Button,
   Collapse,
   CollapseItem,
@@ -43,6 +45,7 @@ const install = (app: App) => {
 
 export {
   install,
+  Alert,
   Button,
   Collapse,
   CollapseItem,
