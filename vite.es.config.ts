@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueDevTools(),
-    dts({ tsconfigPath: './tsconfig.build.json' })
+    dts({ tsconfigPath: './tsconfig.build.json', outDir: 'dist/types' })
   ],
   resolve: {
     alias: {
@@ -19,18 +19,24 @@ export default defineConfig({
     }
   },
   build: {
+    outDir: 'dist/es',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'VElement',
-      fileName: 'v-element'
+      fileName: 'v-element',
+      formats: ['es']
     },
     rollupOptions: {
-      external: ['vue'],
+      external: [
+        'vue',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-solid-svg-icons',
+        '@fortawesome/vue-fontawesome',
+        'async-validator',
+        '@popperjs/core',
+        'axios'
+      ],
       output: {
-        exports: 'named',
-        globals: {
-          vue: 'Vue'
-        }
         // assetFileNames: chunkInfo => {
         //   if (chunkInfo.name === 'style.css') {
         //     return 'index.css'
